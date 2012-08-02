@@ -1,41 +1,32 @@
 Dependencies:
-  
-  Coffeescript-Python - http://github.com/doloopwhile/Python-CoffeeScript
-    ```bash
+  * Coffeescript-Python - http://github.com/doloopwhile/Python-CoffeeScript
     $ pip install coffeescript
-    ```
-    
-  Slimit python native javascript minifier - http://github.com/rspivak/slimit/
-    ```
+  * Slimit python native javascript minifier - http://github.com/rspivak/slimit/
     $ pip install slimit
-    ```
     
 Deep Dependencies (should be resolved by pip):
-
-  PyExecJS - http://pypi.python.org/pypi/PyExecJS
-    ```
+  * PyExecJS - http://pypi.python.org/pypi/PyExecJS
     $ pip install PyExecJS
-    ```
-    
-  PyV8 - http://code.google.com/p/pyv8/
-    ```
+  * PyV8 - http://code.google.com/p/pyv8/
     $ pip install PyV8
-    ```
-    
+
+How to Build:
+  cd into main directory and type make, this will place a debug version in debug and a release version in release or warn you of any compile errors, look at example for suggested foldier hierarchy.
+  
 NOTE: The code in here in coffeescript was not written by me, I took a badly hacked together example from d3's site that a friend was trying to fix up and converted it to coffeescript with an example of how I usually organize my javascript, the logic and functions are still pretty bad though.
 
 Begginings of a simple asset pipeline script for who enjoy:
-* Seperation of code into files based on function, area, or "class"
-* The benefits of coffee script
-* The benefits of 
+  * Seperation of code into files based on function, area, or "class"
+  * The benefits of coffee script
+  * The benefits of 
 
 And those who do not want to rely on:
-* Node.js
-* Rails
-* Pylon
-* Django
-* etc
-* . . .
+  * Node.js
+  * Rails
+  * Pylon
+  * Django
+  * etc
+  * . . .
 
 Do enjoy such things :)
 
