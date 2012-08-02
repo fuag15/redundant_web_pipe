@@ -1,3 +1,5 @@
+NOTE: The code in here in coffeescript was not written by me, I took a badly hacked together example from d3's site that a friend was trying to fix up and converted it to coffeescript with an example of how I usually organize my javascript, the logic and functions are still pretty bad though.
+
 Begginings of a simple asset pipeline script for who enjoy:
   * Seperation of code into files based on function, area, or "class"
   * The benefits of coffee script
