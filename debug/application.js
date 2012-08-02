@@ -1,6 +1,12 @@
+
+/*
+  src_file: ../src/taste_mapper/taste_mapper.js.coffee
+*/
+
+
 (function() {
 
-  window.luma = window.luma || {};
+  window.main_lib_name = window.main_lib_name || {};
 
   (function(taste_mapper, d3, $) {
     var angle_end_handler, angle_start_handler, animation_interval, arc, arc_tween, base_div, base_vis, brightness, circumferal_x_axis, click_handler, colour, context_init, data_path, depth_sort_function, height, init_arc, init_instructions, init_partitions, init_path, init_svg, init_text, is_parent_of, json_handler, max_y, nodes, padding, partition, path, radial_y_axis, radius, radius_inner_handler, radius_outer_handler, text, text_anchor_handler, text_enter, text_fill_handler, text_tween_handler_generator, transform_handler, transform_tween_handler_generator, tspan_one_handler, tspan_two_handler, width;
@@ -220,10 +226,20 @@
     return brightness = function(rgb) {
       return rgb.r * .299 + rgb.g * .587 + rgb.b * .114;
     };
-  })(window.luma.taste_mapper = window.luma.taste_mapper || {}, d3, jQuery);
+  })(window.main_lib_name.taste_mapper = window.main_lib_name.taste_mapper || {}, d3, jQuery);
+
+  /*
+    src_file: ../src/taste_mapper/init.js.coffee
+  */
+
 
   $(function() {
     return window.luma.taste_mapper.init('div_selector', 840, 1000, 5, 'wheel.json');
   });
+
+  /*
+    src_file: ../src/init.js.coffee
+  */
+
 
 }).call(this);

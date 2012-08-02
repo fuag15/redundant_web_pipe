@@ -27,7 +27,7 @@ def compile_all_the_files(path):
 
 def final_coffee_compile(filename):
   ccc = compile_coffeescript(filename)
-  f = open('../build/application.js', 'w')
+  f = open('../debug/application.js', 'w')
   f.write(ccc)
   f.close()
   mccc = minify(ccc, mangle=True, mangle_toplevel=True)

@@ -14,6 +14,9 @@ cd $DIR
 
 rm -f ../build/*
 
-for f in $(find ../src -type f -name *.coffee);
-do cat $f >> ../build/application.js.coffee;
+for f in $(find ../src -type f -name *.coffee); do 
+echo "###" >> ../build/application.js.coffee
+echo "  src_file: $f" >> ../build/application.js.coffee
+echo "###" >> ../build/application.js.coffee
+cat $f >> ../build/application.js.coffee;
 done;

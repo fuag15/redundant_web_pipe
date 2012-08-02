@@ -1,4 +1,7 @@
-window.luma = window.luma or {}
+###
+  src_file: ../src/taste_mapper/taste_mapper.js.coffee
+###
+window.main_lib_name = window.main_lib_name or {}
 ((taste_mapper, d3, $) ->
   
   width = undefined
@@ -203,6 +206,13 @@ window.luma = window.luma or {}
   brightness = (rgb) ->
     rgb.r * .299 + rgb.g * .587 + rgb.b * .114
     
-) window.luma.taste_mapper = window.luma.taste_mapper or {}, d3, jQuery
+) window.main_lib_name.taste_mapper = window.main_lib_name.taste_mapper or {}, d3, jQuery
+###
+  src_file: ../src/taste_mapper/init.js.coffee
+###
 $ ->
-  window.luma.taste_mapper.init 'div_selector', 840, 1000, 5, 'wheel.json' 
+  window.luma.taste_mapper.init 'div_selector', 840, 1000, 5, 'wheel.json'
+###
+  src_file: ../src/init.js.coffee
+###
+ 

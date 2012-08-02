@@ -1,17 +1,41 @@
+Dependencies:
+  
+  Coffeescript-Python - http://github.com/doloopwhile/Python-CoffeeScript
+    ```bash
+    $ pip install coffeescript
+    ```
+    
+  Slimit python native javascript minifier - http://github.com/rspivak/slimit/
+    ```
+    $ pip install slimit
+    ```
+    
+Deep Dependencies (should be resolved by pip):
+
+  PyExecJS - http://pypi.python.org/pypi/PyExecJS
+    ```
+    $ pip install PyExecJS
+    ```
+    
+  PyV8 - http://code.google.com/p/pyv8/
+    ```
+    $ pip install PyV8
+    ```
+    
 NOTE: The code in here in coffeescript was not written by me, I took a badly hacked together example from d3's site that a friend was trying to fix up and converted it to coffeescript with an example of how I usually organize my javascript, the logic and functions are still pretty bad though.
 
 Begginings of a simple asset pipeline script for who enjoy:
-  * Seperation of code into files based on function, area, or "class"
-  * The benefits of coffee script
-  * The benefits of 
+* Seperation of code into files based on function, area, or "class"
+* The benefits of coffee script
+* The benefits of 
 
 And those who do not want to rely on:
-  * Node.js
-  * Rails
-  * Pylon
-  * Django
-  * etc
-  * . . .
+* Node.js
+* Rails
+* Pylon
+* Django
+* etc
+* . . .
 
 Do enjoy such things :)
 
