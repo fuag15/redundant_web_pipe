@@ -1,0 +1,16 @@
+Begginings of a simple asset pipeline script for who enjoy:
+  * Seperation of code into files based on function, area, or "class"
+  * The benefits of coffee script
+  * The benefits of 
+
+And those who do not want to rely on:
+  * Node.js
+  * Rails
+  * Pylon
+  * Django
+  * etc
+  * . . .
+
+Do enjoy such things :)
+
+Right now it has very basic functionality, plan to add sass support in the future, maybe haml but thats another beast for planning how to integrate them.
