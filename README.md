@@ -11,10 +11,13 @@ And those who do not want to rely on:
   * Django
   * etc
  
-**Please Note:** *The coffeescript source code in this project is not original. 
-It was modified the sunburst example from [here](https://github.com/mbostock/d3); 
-however, the original author didn't get into modifying any of the structure 
-and just converted it over.  Working converted example from d3 can be found [here](http://fuag15.github.com/redundant_web_pipe/example/sunburst.html).  Do enjoy such things :)*
+Working converted example from d3 can be found [here](http://fuag15.github.com/redundant_web_pipe/example/sunburst.html).  
+
+Do enjoy such things :)
+
+**Please Note:** *The javascript source code used to derive the example in this project is not original. 
+It was modified from the sunburst example from [here](https://github.com/mbostock/d3); 
+The layout and logic flow of the code has been modified to fit my preffered javascript layout in general but much of the origonal logic flow is still unmodified.*
 
 ### Roadmap
 
