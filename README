@@ -15,6 +15,9 @@ How to Build:
   
 NOTE: The code in here in coffeescript was not written by me, I modified the sunburst example from https://github.com/mbostock/d3 however I didn't get into modifying any of the structure just converted it over.
 
+Autogen'd page can be found: http://fuag15.github.com/redundant_web_pipe/
+Working converted example from d3 can be found: http://fuag15.github.com/redundant_web_pipe/example/sunburst.html
+
 Begginings of a simple asset pipeline script for who enjoy:
   * Seperation of code into files based on function, area, or "class"
   * The benefits of coffee script
