@@ -35,13 +35,11 @@ suggested folder hierarchy.
 ```bash
 
 $ git clone https://github.com/mvanveen/redundant_web_pipe.git
-
 Cloning into 'redundant_web_pipe'...
 remote: Counting objects: 93, done.
 remote: Compressing objects: 100% (51/51), done.
 remote: Total 93 (delta 27), reused 93 (delta 27)
 Unpacking objects: 100% (93/93), done.
-
 $ cd redundant_web_pipe
 $ make
 
