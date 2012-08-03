@@ -60,7 +60,7 @@ def final_coffee_compile(filename):
   f = open('../debug/application.js', 'w')
   f.write(ccc)
   f.close()
-  mccc = minify(ccc, mangle=True, mangle_toplevel=True)
+  mccc = minify(ccc, mangle=True, mangle_toplevel=False)
   f = open('../release/application.js', 'w')
   f.write(mccc)
   f.close()
