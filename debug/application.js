@@ -1,6 +1,6 @@
 
 /*
-  src_file: ../src/taste_mapper/taste_mapper.js.coffee
+  src_file: ../src/sunburst/sunburst.js.coffee
 */
 
 
@@ -8,233 +8,119 @@
 
   window.main_lib_name = window.main_lib_name || {};
 
-  (function(taste_mapper, d3, $) {
-    var angle_end_handler, angle_start_handler, animation_interval, arc, arc_tween, base_div, base_vis, brightness, circumferal_x_axis, click_handler, colour, context_init, data_path, depth_sort_function, height, init_arc, init_instructions, init_partitions, init_path, init_svg, init_text, is_parent_of, json_handler, max_y, nodes, padding, partition, path, radial_y_axis, radius, radius_inner_handler, radius_outer_handler, text, text_anchor_handler, text_enter, text_fill_handler, text_tween_handler_generator, transform_handler, transform_tween_handler_generator, tspan_one_handler, tspan_two_handler, width;
-    width = void 0;
-    height = width / 2;
-    radius = width / 2;
-    circumferal_x_axis = d3.scale.linear().range([0, 2 * Math.PI]);
-    radial_y_axis = d3.scale.pow().exponent(1.3).domain([0, 1]).range([0, radius]);
-    padding = void 0;
-    animation_interval = void 0;
-    base_div = void 0;
-    base_vis = void 0;
+  (function(sunburst, d3, $) {
+    var arc, arcTween, color, context_init, control_init, count_calculation_handler, count_click_handler, height, init_arc, init_partition, init_path, init_vis, partition, path, radius, size_calculation_handler, size_click_handler, stash, vis, width;
+    width = 960;
+    height = 700;
+    radius = Math.min(width, height) / 2;
+    color = d3.scale.category20c();
+    vis = void 0;
     partition = void 0;
     arc = void 0;
-    data_path = void 0;
-    nodes = void 0;
     path = void 0;
-    text = void 0;
-    text_enter = void 0;
     /*
-        Base Config Initialization functions
+        Config Init and Helpers
     */
 
-    taste_mapper.init = function(div, width_in, animation_interval_in, padding_in, data_path_in) {
-      if (width_in == null) {
-        width_in = 840;
-      }
-      if (animation_interval_in == null) {
-        animation_interval_in = 1000;
-      }
-      if (padding_in == null) {
-        padding_in = 5;
-      }
-      if (div == null) {
-        div = '#vis';
-      }
-      if (data_path_in == null) {
-        data_path_in = "wheel.json";
-      }
-      width = width_in;
-      animation_interval = animation_interval_in;
-      padding = padding_in;
-      data_path = data_path_in;
-      base_div = d3.select(div);
-      div.select('img').remove();
-      base_vis = init_svg();
-      init_instructions();
-      partition = init_partitions();
-      arc = init_arc();
-      return d3.json(data_path, json_handler);
-    };
-    init_svg = function() {
-      return base_div.append("svg").attr("width", width + padding * 2).attr("height", height + padding * 2).append("g").attr("transform", "translate(" + (radius + padding) + "," + (radius + padding) + ")");
-    };
-    init_instructions = function() {
-      return base_div.append("p").attr("id", "intro").attr("Click to zoom!");
-    };
-    init_partitions = function() {
-      return d3.layout.partition().sort(null).value(depth_sort_function);
-    };
-    depth_sort_function = function(layer_data) {
-      return 5.8 - layer_data.depth;
+    sunburst.init = function() {
+      init_vis();
+      init_partition();
+      init_arc();
+      return d3.json("./data/flare.json", context_init);
     };
     init_arc = function() {
-      return d3.svg.arc().startAngle(angle_start_handler).endAngle(angle_end_handler).innerRadius(radius_inner_handler).outerRadius(radius_outer_handler);
-    };
-    angle_start_handler = function(d) {
-      return Math.max(0, Math.min(2 * Math.PI, x(d.x)));
-    };
-    angle_end_handler = function(d) {
-      return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx)));
-    };
-    radius_inner_handler = function(d) {
-      return Math.max(0, d.y ? y(d.y) : d.y);
-    };
-    radius_outer_handler = function(d) {
-      return Math.max(0, y(d.y + d.dy));
-    };
-    /*
-        Context Setup Functions
-    */
-
-    context_init = function() {
-      init_path();
-      return init_text();
-    };
-    init_path = function() {
-      path = base_vis.selectAll("path").data(nodes);
-      return path.enter().append('path').attr("id", function(d, i) {
-        return "path-" + i;
-      }).attr("d", arc).attr("fill-rule", "evenodd").style("fill", colour).on("click", click_handler);
-    };
-    init_text = function() {
-      text = base_vis.selectAll("text").data(nodes);
-      text_enter = text.enter().append('text').style('fill', text_fill_handler).attr('text-anchor', text_anchor_handler).attr('dy', '.2em').attr('transform', transform_handler).on('click', click_handler);
-      text_enter.append('tspan').attr('x', 0).text(tspan_one_handler);
-      return text_enter.append('tspan').attr('x', 0).attr('dy', '1em').text(text_two_handler);
-    };
-    tspan_one_handler = function(d) {
-      if (d.depth) {
-        return d.name.split(' ')[0];
-      } else {
-        return '';
-      }
-    };
-    tspan_two_handler = function(d) {
-      if (d.depth) {
-        return d.name.split(' ')[1] || '';
-      } else {
-        return '';
-      }
-    };
-    text_fill_handler = function(d) {
-      if (brightness(d3.rgb(colour(d))) < 125) {
-        return '#eee';
-      } else {
-        return '#000';
-      }
-    };
-    text_anchor_handler = function(d) {
-      if (x(d.x + d.dx / 2) > Math.PI) {
-        return 'end';
-      } else {
-        return 'start';
-      }
-    };
-    transform_handler = function(d) {
-      var angle, multiline, rotate;
-      multiline = (d.name || '').split(' ').length > 1;
-      angle = x(d.x + d.dx / 2) * 180 / Math.PI - 90;
-      rotate = angle + (multiline ? -0.5 : 0);
-      return "rotate(" + rotate + ")translate(" + (y(d.y) + p) + ")rotate(" + (angle > 90 ? -180 : 0) + ")";
-    };
-    /*
-        meat functions
-    */
-
-    json_handler = function(json) {
-      nodes = partition.nodes({
-        children: json
+      return arc = d3.svg.arc().startAngle(function(d) {
+        return d.x;
+      }).endAngle(function(d) {
+        return d.x + d.dx;
+      }).innerRadius(function(d) {
+        return Math.sqrt(d.y);
+      }).outerRadius(function(d) {
+        return Math.sqrt(d.y + d.dy);
       });
-      return context_init();
     };
-    click_handler = function(d) {
-      path.transition().duration(duration).attrTween('d', arc_tween(d));
-      if (!is_parent_of(d, e)) {
-        return text.style('visibility', function(e) {
-          return d3.select(this).style('visibility');
-        }).transition().duraction(duration).attrTween('text-anchor', text_tween_handler_generator).attrTween('transform', transform_tween_handler_generator).style('fill-opacity', function(e) {
-          var _ref;
-          return (_ref = is_parent_of(d, e)) != null ? _ref : {
-            1: 1e-6
-          };
-        }).each('end', function(e) {
-          return d3.select(this).style('visibility', is_parent_of(d, e) ? null : 'hidden');
-        });
-      }
+    init_partition = function() {
+      return partition = d3.layout.partition().sort(null).size([2 * Math.PI, radius * radius]).value(function(d) {
+        return 1;
+      });
     };
-    text_tween_handler_generator = function(d) {
-      return function() {
-        var _ref;
-        return (x(d.x + d.dx / 2) > (_ref = Math.PI) && _ref > {
-          'end': 'start'
-        });
-      };
-    };
-    transform_tween_handler_generator = function(d) {
-      var multiline;
-      multiline = (d.name || '').split(' ').length > 1;
-      return function() {
-        var angle, rotate;
-        angle = x(d.x + d.dx / 2) * 180 / Math.PI - 90;
-        rotate = angle + (multline ? -0.5 : 0);
-        return "rotate(" + rotate + ")translate(" + (y(d.y) + padding) + ")rotate(" + (angle > 90 ? -180 : 0) + ")";
-      };
+    init_vis = function() {
+      return vis = d3.select("#chart").append("svg").attr("width", width).attr("height", height).append("g").attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")");
     };
     /*
-        helper functions (maybe put in external luma.utility object)
+        Context Init Helpers
     */
 
-    is_parent_of = function(parent, child) {
-      if (parent === child) {
-        return true;
-      } else if (parent.children) {
-        return parent.children.some(function(d) {
-          return is_parent_of(d, child);
-        });
-      } else {
-        return false;
-      }
+    init_path = function(json) {
+      return path = vis.data(json).selectAll("path").data(partition.nodes).enter().append("path").attr("display", function(d) {
+        if (d.depth) {
+          return null;
+        } else {
+          return "none";
+        }
+      }).attr("d", arc).attr("fill-rule", "evenodd").style("stroke", "#fff").style("fill", function(d) {
+        return color((d.children ? d : d.parent).name);
+      }).each(stash);
     };
-    colour = function(d) {
-      var a, b, colours;
-      if (d.children) {
-        colours = d.children.map(colour);
-        a = d3.hsl(colours[0]);
-        b = d3.hsl(colours[1]);
-        return d3.hsl((a.h + b.h) / 2, a.s * 1.2, a.l / 1.2);
-      } else {
-        return d.colour || '#fff';
-      }
+    control_init = function() {
+      d3.select("#size").on("click", size_click_handler);
+      return d3.select("#count").on("click", count_click_handler);
     };
-    arc_tween = function(d) {
-      var my, xd, yd, yr;
-      my = max_y(d);
-      xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]);
-      yd = d3.interpolate(y.domain(), [d.y, my]);
-      return yr = d3.interpolate(y.range(), [(d.y ? 20 : 0), radius]);
+    context_init = function(json) {
+      init_path([json]);
+      return control_init();
     };
-    max_y = function(d) {
-      if (d.children) {
-        return Math.max.apply(Math, d.children.map(max_y));
-      } else {
-        return d.y + d.dy;
-      }
+    /*
+        Event Handlers
+    */
+
+    size_click_handler = function() {
+      path.data(partition.value(size_calculation_handler)).transition().duration(1500).attrTween("d", arcTween);
+      d3.select("#size").classed("active", true);
+      return d3.select("#count").classed("active", false);
     };
-    return brightness = function(rgb) {
-      return rgb.r * .299 + rgb.g * .587 + rgb.b * .114;
+    count_click_handler = function() {
+      path.data(partition.value(count_calculation_handler)).transition().duration(1500).attrTween("d", arcTween);
+      d3.select("#size").classed("active", false);
+      return d3.select("#count").classed("active", true);
     };
-  })(window.main_lib_name.taste_mapper = window.main_lib_name.taste_mapper || {}, d3, jQuery);
+    size_calculation_handler = function(d) {
+      return d.size;
+    };
+    count_calculation_handler = function(d) {
+      return 1;
+    };
+    /*
+        Utility Functions
+    */
+
+    stash = function(d) {
+      d.x0 = d.x;
+      return d.dx0 = d.dx;
+    };
+    return arcTween = function(a) {
+      var i;
+      i = d3.interpolate({
+        x: a.x0,
+        dx: a.dx0
+      }, a);
+      return function(t) {
+        var b;
+        b = i(t);
+        a.x0 = b.x;
+        a.dx0 = b.dx;
+        return arc(b);
+      };
+    };
+  })(window.main_lib_name.sunburst = window.main_lib_name.sunburst || {}, d3, jQuery);
 
   /*
-    src_file: ../src/taste_mapper/init.js.coffee
+    src_file: ../src/sunburst/init.js.coffee
   */
 
 
   $(function() {
-    return window.luma.taste_mapper.init('div_selector', 840, 1000, 5, 'wheel.json');
+    return window.main_lib_name.sunburst.init();
   });
 
   /*

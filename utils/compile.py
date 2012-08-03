@@ -15,7 +15,11 @@ def compile_coffeescript(filename):
     return coffeescript.compile_file(filename)
   except execjs.RuntimeError as e:
     print "{0}: {1}".format(filename, e.message)
-    sys.exit(2)
+    sys.exit(12)
+  except execjs.RuntimeError as e:
+    print "{0}: {1}".format(filename, e.message)
+    print "Did you remember to leave an empty line at the end of a source file?"
+    sys.exit(12)
 
 def compile_foldier_tuple(file_info):
   for file_name in file_info[1]:

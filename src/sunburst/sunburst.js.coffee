@@ -1,6 +1,3 @@
-###
-  src_file: ../src/sunburst/sunburst.js.coffee
-###
 window.main_lib_name = window.main_lib_name or {}
 ((sunburst, d3, $) ->
   width = 960
@@ -122,12 +119,3 @@ window.main_lib_name = window.main_lib_name or {}
       arc b
       
 ) window.main_lib_name.sunburst = window.main_lib_name.sunburst or {}, d3, jQuery
-###
-  src_file: ../src/sunburst/init.js.coffee
-###
-$ ->
-  window.main_lib_name.sunburst.init()
-###
-  src_file: ../src/init.js.coffee
-###
- 
