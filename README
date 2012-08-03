@@ -13,7 +13,7 @@ Deep Dependencies (should be resolved by pip):
 How to Build:
   cd into main directory and type make, this will place a debug version in debug and a release version in release or warn you of any compile errors, look at example for suggested foldier hierarchy.
   
-NOTE: The code in here in coffeescript was not written by me, I took a badly hacked together example from d3's site that a friend was trying to fix up and converted it to coffeescript with an example of how I usually organize my javascript, the logic and functions are still pretty bad though.
+NOTE: The code in here in coffeescript was not written by me, I modified the sunburst example from https://github.com/mbostock/d3 however I didn't get into modifying any of the structure just converted it over.
 
 Begginings of a simple asset pipeline script for who enjoy:
   * Seperation of code into files based on function, area, or "class"
@@ -30,4 +30,4 @@ And those who do not want to rely on:
 
 Do enjoy such things :)
 
-Right now it has very basic functionality, plan to add sass support in the future, maybe haml but thats another beast for planning how to integrate them.
+Right now it has very basic functionality, plan to add sass support in the future, maybe haml but thats another beast for planning how to integrate them. This example is flush with 1000 foldiers for something fairly simple those could definitely be reduced.
