@@ -33,7 +33,7 @@ def compile_coffeescript(filename):
   except execjs.RuntimeError as e:
     print "{0}: {1}".format(filename, e.message)
     sys.exit(12)
-  except execjs.RuntimeError as e:
+  except execjs.ProgramError as e:
     print "{0}: {1}".format(filename, e.message)
     print "Did you remember to leave an empty line at the end of a source file?"
     sys.exit(12)

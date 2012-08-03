@@ -124,8 +124,7 @@ window.main_lib_name = window.main_lib_name or {}
   src_file: ../src/sunburst/init.js.coffee
 ###
 $ ->
-  window.main_lib_name.sunburst.init()
-###
+  window.main_lib_name.sunburst.init()###
   src_file: ../src/init.js.coffee
 ###
  
