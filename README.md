@@ -1,21 +1,32 @@
-## Dependencies
+## Introduction
 
-### Pre-Installled Dependencies
+Beginnings of a simple asset pipeline script for those who enjoy:
 
-  * Coffeescript-Python - http://github.com/doloopwhile/Python-CoffeeScript
-    $ pip install coffeescript
-  * Slimit python native javascript minifier - http://github.com/rspivak/slimit/
-    $ pip install slimit
-    
-### Required Dependencies (to be resolved by pip):
-  * PyExecJS - http://pypi.python.org/pypi/PyExecJS
+  * Seperation of code into files based on function, area, or "class"
+  * The benefits of coffee script
 
-    $ pip install PyExecJS
-  * PyV8 - http://code.google.com/p/pyv8/
+And those who do not want to rely on:
 
-    $ pip install PyV8
+  * Node.js
+  * Rails
+  * Pylon
+  * Django
+  * etc
+ 
+ 
+**Please Note:** *The coffeescript source code in this project is not original. 
+It was modified the sunburst example from [here](https://github.com/mbostock/d3); 
+however, the original author didn't get into modifying any of the structure 
+and just converted it over.  Working converted example from d3 can be found [here](http://fuag15.github.com/redundant_web_pipe/example/sunburst.html).  Do enjoy such things :)*
 
-### How to Build
+### Roadmap
+
+Right now it has very basic functionality, plan to add sass support in the future, 
+maybe haml but thats another beast for planning how to integrate them.
+
+This example is flush with 1000 foldiers for something fairly simple those could definitely be reduced.
+
+## Install
 
 This will place a debug version in debug and a release version in 
 release or warn you of any compile errors, look at example for 
@@ -36,26 +47,20 @@ $ make
 
 ```
 
-NOTE: The code in here in coffeescript was not written by me, I 
-modified the sunburst example from [here](https://github.com/mbostock/d3), 
-however I didn't get into modifying any of the structure just converted it over.
+## Dependencies
 
-Autogen'd page can be found: http://fuag15.github.com/redundant_web_pipe/
-Working converted example from d3 can be found: http://fuag15.github.com/redundant_web_pipe/example/sunburst.html
+### Pre-Installled Dependencies
 
-Begginings of a simple asset pipeline script for who enjoy:
-  * Seperation of code into files based on function, area, or "class"
-  * The benefits of coffee script
-  * The benefits of 
+  * Coffeescript-Python - http://github.com/doloopwhile/Python-CoffeeScript
+    $ pip install coffeescript
+  * Slimit python native javascript minifier - http://github.com/rspivak/slimit/
+    $ pip install slimit
+    
+### Required Dependencies (to be resolved by pip):
+  * PyExecJS - http://pypi.python.org/pypi/PyExecJS
 
-And those who do not want to rely on:
-  * Node.js
-  * Rails
-  * Pylon
-  * Django
-  * etc
-  * . . .
+    $ pip install PyExecJS
+  * PyV8 - http://code.google.com/p/pyv8/
 
-Do enjoy such things :)
+    $ pip install PyV8
 
-Right now it has very basic functionality, plan to add sass support in the future, maybe haml but thats another beast for planning how to integrate them. This example is flush with 1000 foldiers for something fairly simple those could definitely be reduced.
