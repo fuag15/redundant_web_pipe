@@ -1,3 +1,7 @@
+# Redundant Web Pipe
+
+## A web asset pipe aimed at cutting down on dependencies
+
 ## Introduction
 
 Beginnings of a simple asset pipeline script for those who enjoy:
