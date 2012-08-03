@@ -29,17 +29,15 @@ window.main_lib_name = window.main_lib_name or {}
       d.x + d.dx
     ).innerRadius((d) ->
       Math.sqrt d.y
-    ).outerRadius((d) ->
+    ).outerRadius (d) ->
       Math.sqrt d.y + d.dy
-    )
   
   init_partition = ->
     partition = d3.layout.partition()
       .sort(null)
       .size([2 * Math.PI, radius * radius])
-      .value((d) ->
+      .value (d) ->
         1
-      )
       
   init_vis = ->
     vis = d3.select("#chart")
@@ -47,7 +45,7 @@ window.main_lib_name = window.main_lib_name or {}
       .attr("width", width)
       .attr("height", height)
       .append("g")
-      .attr("transform", "translate(#{width / 2},#{height / 2})")
+      .attr "transform", "translate(#{width / 2},#{height / 2})"
   
   ###
     Context Init Helpers
@@ -60,13 +58,13 @@ window.main_lib_name = window.main_lib_name or {}
       .enter()
       .append("path")
       .attr("display", (d) ->
-        (if d.depth then null else "none")
+        if d.depth then null else "none"
       ).attr("d", arc)
       .attr("fill-rule", "evenodd")
       .style("stroke", "#fff")
       .style("fill", (d) ->
-        color ((if d.children then d else d.parent)).name
-      ).each(stash)
+        color (if d.children then d else d.parent).name
+      ).each stash
   
   control_init = ->
     d3.select("#size").on "click", size_click_handler
@@ -111,12 +109,12 @@ window.main_lib_name = window.main_lib_name or {}
     d.dx0 = d.dx
   
   arcTween = (a) ->
-    i = d3.interpolate(
+    i = d3.interpolate
       x: a.x0
       dx: a.dx0
-    , a)
+    , a
     (t) ->
-      b = i(t)
+      b = i t
       a.x0 = b.x
       a.dx0 = b.dx
       arc b
