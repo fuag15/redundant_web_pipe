@@ -1,9 +1,3 @@
-# Redundant Web Pipe
-
-## A web asset pipe aimed at cutting down on dependencies
-
-## Introduction
-
 Beginnings of a simple asset pipeline script for those who enjoy:
 
   * Seperation of code into files based on function, area, or "class"
@@ -17,7 +11,6 @@ And those who do not want to rely on:
   * Django
   * etc
  
- 
 **Please Note:** *The coffeescript source code in this project is not original. 
 It was modified the sunburst example from [here](https://github.com/mbostock/d3); 
 however, the original author didn't get into modifying any of the structure 
@@ -30,7 +23,7 @@ maybe haml but thats another beast for planning how to integrate them.
 
 This example is flush with 1000 foldiers for something fairly simple those could definitely be reduced.
 
-## Install
+### Install
 
 This will place a debug version in debug and a release version in 
 release or warn you of any compile errors, look at example for 
@@ -45,24 +38,16 @@ remote: Compressing objects: 100% (51/51), done.
 remote: Total 93 (delta 27), reused 93 (delta 27)
 Unpacking objects: 100% (93/93), done.
 $ cd redundant_web_pipe
-$ make
+$ make install
 
 ```
 
-## Dependencies
-
-### Pre-Installled Dependencies
+### Dependencies Installed by Script
 
   * Coffeescript-Python - http://github.com/doloopwhile/Python-CoffeeScript
-    $ pip install coffeescript
   * Slimit python native javascript minifier - http://github.com/rspivak/slimit/
-    $ pip install slimit
-    
-### Required Dependencies (to be resolved by pip):
-  * PyExecJS - http://pypi.python.org/pypi/PyExecJS
 
-    $ pip install PyExecJS
-  * PyV8 - http://code.google.com/p/pyv8/
-
-    $ pip install PyV8
-
+```bash
+$ pip install coffeescript
+$ pip install slimit
+``` 
