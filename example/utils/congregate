@@ -1,0 +1,22 @@
+#!/bin/bash
+
+SOURCE="${BASH_SOURCE[0]}"
+DIR="$( dirname "$SOURCE" )"
+while [ -h "$SOURCE" ]
+do 
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+  DIR="$( cd "$( dirname "$0" )" && pwd )"
+done
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+cd $DIR
+
+rm -f ../build/*
+
+for f in $(find ../src -type f -name *.coffee); do 
+echo "###" >> ../build/application.js.coffee
+echo "  src_file: $f" >> ../build/application.js.coffee
+echo "###" >> ../build/application.js.coffee
+cat $f >> ../build/application.js.coffee;
+done;

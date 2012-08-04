@@ -1,0 +1,18 @@
+#!/bin/bash
+
+SOURCE="${BASH_SOURCE[0]}"
+DIR="$( dirname "$SOURCE" )"
+while [ -h "$SOURCE" ]
+do 
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+  DIR="$( cd "$( dirname "$0" )" && pwd )"
+done
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+cd $DIR
+
+if python ./compile.py; then
+  ./congregate
+  python ./compile.py -f -s '../build/application.js.coffee'
+fi;
