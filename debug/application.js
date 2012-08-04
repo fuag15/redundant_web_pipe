@@ -30,7 +30,8 @@
       init_vis(elem);
       init_partition();
       init_arc();
-      return d3.json(json, context_init);
+      d3.json(json, context_init);
+      return elem.attr('data-initialized', true);
     };
     init_seed_vars = function(elem) {
       width = elem.data('width');

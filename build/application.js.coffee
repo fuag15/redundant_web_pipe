@@ -24,6 +24,7 @@ window.main_lib_name = window.main_lib_name or {}
     init_partition()
     init_arc()
     d3.json json, context_init
+    elem.attr 'data-initialized', true 
   
   init_seed_vars = (elem) ->
     width = elem.data 'width'
