@@ -15,6 +15,7 @@ And those who do not want to rely on:
   * etc
  
 Working converted example from d3 can be found [here](http://fuag15.github.com/redundant_web_pipe/example/sunburst.html).  
+And the main chunk of source can be found [here](http://github.com/fuag15/redundant_web_pipe/blob/master/src/sunburst/sunburst.js.coffee)
 
 Do enjoy such things :)
 
