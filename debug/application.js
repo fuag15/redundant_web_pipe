@@ -9,7 +9,7 @@
   window.main_lib_name = window.main_lib_name || {};
 
   (function(sunburst, d3, $) {
-    var arc, arcTween, color, context_init, control_init, count_calculation_handler, count_click_handler, height, init_arc, init_partition, init_path, init_vis, partition, path, radius, size_calculation_handler, size_click_handler, stash, vis, width;
+    var arc, arcTween, color, context_init, control_init, count_calculation_handler, count_click_handler, height, init_arc, init_partition, init_path, init_seed_vars, init_vis, json, partition, path, radius, size_calculation_handler, size_click_handler, stash, vis, width;
     width = 960;
     height = 700;
     radius = Math.min(width, height) / 2;
@@ -18,15 +18,24 @@
     partition = void 0;
     arc = void 0;
     path = void 0;
+    json = void 0;
     /*
         Config Init and Helpers
     */
 
-    sunburst.init = function() {
-      init_vis();
+    sunburst.init = function(selector) {
+      var elem;
+      elem = $("." + selector + "[data-initialized=false]").first();
+      init_seed_vars(elem);
+      init_vis(elem);
       init_partition();
       init_arc();
-      return d3.json("./data/flare.json", context_init);
+      return d3.json(json, context_init);
+    };
+    init_seed_vars = function(elem) {
+      width = elem.data('width');
+      height = elem.data('height');
+      return json = elem.data('json');
     };
     init_arc = function() {
       return arc = d3.svg.arc().startAngle(function(d) {
@@ -44,8 +53,8 @@
         return 1;
       });
     };
-    init_vis = function() {
-      return vis = d3.select("#chart").append("svg").attr("width", width).attr("height", height).append("g").attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")");
+    init_vis = function(elem) {
+      return vis = d3.select("#" + (elem.attr('id'))).append("svg").attr("width", elem.data('width')).attr("height", elem.data('height')).append("g").attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")");
     };
     /*
         Context Init Helpers
@@ -120,7 +129,7 @@
 
 
   $(function() {
-    return window.main_lib_name.sunburst.init();
+    return window.main_lib_name.sunburst.init("sunburst");
   });
 
   /*
