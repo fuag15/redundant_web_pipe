@@ -36,7 +36,7 @@ suggested folder hierarchy.
 
 ```bash
 
-$ git clone https://github.com/mvanveen/redundant_web_pipe.git
+$ git clone https://github.com/fuag15/redundant_web_pipe.git
 Cloning into 'redundant_web_pipe'...
 remote: Counting objects: 93, done.
 remote: Compressing objects: 100% (51/51), done.
