@@ -44,7 +44,7 @@ $ make serve
 
 ```
 
-then click [here](localhost:8888/sunburst.html)
+then click [here](http://localhost:8888/sunburst.html)
 
 ### Dependencies Installed by Script
 
