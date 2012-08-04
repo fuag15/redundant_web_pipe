@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Redundant web pipe : A web asset pipe aimed at cutting down on dependencies" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Redundant web pipe</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/fuag15/redundant_web_pipe">View on GitHub</a>
+
+          <h1 id="project_title">Redundant web pipe</h1>
+          <h2 id="project_tagline">A web asset pipe aimed at cutting down on dependencies</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/fuag15/redundant_web_pipe/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/fuag15/redundant_web_pipe/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>Overview</h3>
+
+<p>Beginnings of a simple asset pipeline script for those who enjoy:</p>
+
+<ul>
+<li>Seperation of code into files based on function, area, or "class"</li>
+<li>The benefits of coffee script</li>
+<li>Taking advantage of data attributes to play nicely with ajaxian sites</li>
+</ul><p>And those who do not want to rely on:</p>
+
+<ul>
+<li>Node.js</li>
+<li>Rails</li>
+<li>Pylon</li>
+<li>Django</li>
+<li>etc</li>
+</ul><p>Working converted example from d3 can be found <a href="http://fuag15.github.com/redundant_web_pipe/example/sunburst.html">here</a>.  </p>
+
+<p>Do enjoy such things :)</p>
+
+<p><strong>Please Note:</strong> <em>The javascript source code used to derive the example in this project is not original. 
+It was modified from the sunburst example from <a href="https://github.com/mbostock/d3">here</a>; 
+The layout and logic flow of the code has been modified to fit my preffered javascript layout in general but much of the origonal logic flow is still unmodified.</em></p>
+
+<h3>Roadmap</h3>
+
+<p>Right now it has very basic functionality, plan to add sass support in the future, 
+maybe haml but thats another beast for planning how to integrate them.</p>
+
+<p>This example is flush with 1000 foldiers for something fairly simple those could definitely be reduced.</p>
+
+<h3>Install</h3>
+
+<p>make will compile any script in src, place a debug version in debug and a release version in 
+release or warn you of any compile errors. look at example for suggested folder hierarchy.</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/fuag15/redundant_web_pipe.git
+<span class="nv">$ </span><span class="nb">cd </span>redundant_web_pipe
+<span class="nv">$ </span>make install
+<span class="nv">$ </span>make
+<span class="nv">$ </span>make serve
+</pre></div>
+
+<p>then click <a href="http://localhost:8888/sunburst.html">here</a></p>
+
+<h3>Dependencies Installed by Script</h3>
+
+<ul>
+<li>Coffeescript-Python - <a href="http://github.com/doloopwhile/Python-CoffeeScript">http://github.com/doloopwhile/Python-CoffeeScript</a>
+</li>
+<li>Slimit python native javascript minifier - <a href="http://github.com/rspivak/slimit/">http://github.com/rspivak/slimit/</a>
+</li>
+</ul><div class="highlight"><pre><span class="nv">$ </span>pip install coffeescript
+<span class="nv">$ </span>pip install slimit
+</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Redundant web pipe maintained by <a href="https://github.com/fuag15">fuag15</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
