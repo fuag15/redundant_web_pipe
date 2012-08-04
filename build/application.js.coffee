@@ -11,16 +11,24 @@ window.main_lib_name = window.main_lib_name or {}
   partition = undefined
   arc = undefined
   path = undefined
+  json = undefined
   
   ###
     Config Init and Helpers
   ###
   
-  sunburst.init = ->
-    init_vis()
+  sunburst.init = (selector)->
+    elem = $(".#{selector}[data-initialized=false]").first()
+    init_seed_vars elem
+    init_vis(elem)
     init_partition()
     init_arc()
-    d3.json "./data/flare.json", context_init
+    d3.json json, context_init
+  
+  init_seed_vars = (elem) ->
+    width = elem.data 'width'
+    height = elem.data 'height'
+    json = elem.data 'json'
   
   init_arc = ->
     arc =d3.svg.arc().startAngle((d) ->
@@ -39,11 +47,11 @@ window.main_lib_name = window.main_lib_name or {}
       .value (d) ->
         1
       
-  init_vis = ->
-    vis = d3.select("#chart")
+  init_vis = (elem)->
+    vis = d3.select("##{elem.attr('id')}")
       .append("svg")
-      .attr("width", width)
-      .attr("height", height)
+      .attr("width", elem.data('width'))
+      .attr("height", elem.data('height'))
       .append("g")
       .attr "transform", "translate(#{width / 2},#{height / 2})"
   
@@ -124,7 +132,8 @@ window.main_lib_name = window.main_lib_name or {}
   src_file: ../src/sunburst/init.js.coffee
 ###
 $ ->
-  window.main_lib_name.sunburst.init()###
+  window.main_lib_name.sunburst.init("sunburst")
+###
   src_file: ../src/init.js.coffee
 ###
  

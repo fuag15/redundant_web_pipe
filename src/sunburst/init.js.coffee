@@ -1,3 +1,2 @@
 $ ->
-  window.main_lib_name.sunburst.init()
-  
+  window.main_lib_name.sunburst.init("sunburst")
