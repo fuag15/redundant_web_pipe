@@ -9,34 +9,54 @@
   window.main_lib_name = window.main_lib_name || {};
 
   (function(sunburst, d3, $) {
-    var arc, arcTween, color, context_init, control_init, count_calculation_handler, count_click_handler, height, init_arc, init_partition, init_path, init_seed_vars, init_vis, json, partition, path, radius, size_calculation_handler, size_click_handler, stash, vis, width;
-    width = 960;
-    height = 700;
-    radius = Math.min(width, height) / 2;
-    color = d3.scale.category20c();
+    /*
+        data vars
+    */
+
+    var anim_duration, arc, arc_tween, color, context_init, control_init, count_calculation_handler, count_click_handler, height, init_arc, init_controls, init_partition, init_path, init_seed_vars, init_vis, json, partition, path, radius, size_calculation_handler, size_click_handler, stash, vis, width;
+    width = void 0;
+    height = void 0;
+    radius = void 0;
+    path = void 0;
+    json = void 0;
+    anim_duration = void 0;
+    /*
+        internal vars
+    */
+
+    color = void 0;
     vis = void 0;
     partition = void 0;
     arc = void 0;
-    path = void 0;
-    json = void 0;
     /*
         Config Init and Helpers
     */
 
     sunburst.init = function(selector) {
       var elem;
+      if (selector == null) {
+        selector = 'sunburst';
+      }
       elem = $("." + selector + "[data-initialized=false]").first();
       init_seed_vars(elem);
+      init_controls(elem);
       init_vis(elem);
       init_partition();
       init_arc();
       d3.json(json, context_init);
       return elem.attr('data-initialized', true);
     };
+    init_controls = function(elem) {
+      d3.select("#" + (elem.attr('id'))).append("button").attr("class", 'first active').attr("id", 'count').html('Count');
+      return d3.select("#" + (elem.attr('id'))).append("button").attr("class", 'last').attr("id", 'size').html('Size');
+    };
     init_seed_vars = function(elem) {
       width = elem.data('width');
       height = elem.data('height');
-      return json = elem.data('json');
+      json = elem.data('json');
+      anim_duration = elem.data('anim_duration');
+      radius = (Math.min(width, height)) / 2;
+      return color = d3.scale.category20c();
     };
     init_arc = function() {
       return arc = d3.svg.arc().startAngle(function(d) {
@@ -85,12 +105,12 @@
     */
 
     size_click_handler = function() {
-      path.data(partition.value(size_calculation_handler)).transition().duration(1500).attrTween("d", arcTween);
+      path.data(partition.value(size_calculation_handler)).transition().duration(anim_duration).attrTween("d", arc_tween);
       d3.select("#size").classed("active", true);
       return d3.select("#count").classed("active", false);
     };
     count_click_handler = function() {
-      path.data(partition.value(count_calculation_handler)).transition().duration(1500).attrTween("d", arcTween);
+      path.data(partition.value(count_calculation_handler)).transition().duration(anim_duration).attrTween("d", arc_tween);
       d3.select("#size").classed("active", false);
       return d3.select("#count").classed("active", true);
     };
@@ -108,7 +128,7 @@
       d.x0 = d.x;
       return d.dx0 = d.dx;
     };
-    return arcTween = function(a) {
+    return arc_tween = function(a) {
       var i;
       i = d3.interpolate({
         x: a.x0,
@@ -130,7 +150,7 @@
 
 
   $(function() {
-    return window.main_lib_name.sunburst.init("sunburst");
+    return window.main_lib_name.sunburst.init();
   });
 
   /*

@@ -4,6 +4,7 @@ Beginnings of a simple asset pipeline script for those who enjoy:
 
   * Seperation of code into files based on function, area, or "class"
   * The benefits of coffee script
+  * Taking advantage of data attributes to play nicely with ajaxian sites
 
 And those who do not want to rely on:
 
@@ -30,22 +31,20 @@ This example is flush with 1000 foldiers for something fairly simple those could
 
 ### Install
 
-This will place a debug version in debug and a release version in 
-release or warn you of any compile errors, look at example for 
-suggested folder hierarchy.
+make will compile any script in src, place a debug version in debug and a release version in 
+release or warn you of any compile errors. look at example for suggested folder hierarchy.
 
 ```bash
 
 $ git clone https://github.com/fuag15/redundant_web_pipe.git
-Cloning into 'redundant_web_pipe'...
-remote: Counting objects: 93, done.
-remote: Compressing objects: 100% (51/51), done.
-remote: Total 93 (delta 27), reused 93 (delta 27)
-Unpacking objects: 100% (93/93), done.
 $ cd redundant_web_pipe
 $ make install
+$ make
+$ make serve
 
 ```
+
+then click [here](localhost:8888/sunburst.html)
 
 ### Dependencies Installed by Script
 
