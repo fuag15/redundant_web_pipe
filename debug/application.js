@@ -13,7 +13,7 @@
         data vars
     */
 
-    var anim_duration, arc, arc_tween, color, context_init, control_init, count_calculation_handler, count_click_handler, height, init_arc, init_controls, init_partition, init_path, init_seed_vars, init_vis, json, partition, path, radius, size_calculation_handler, size_click_handler, stash, vis, width;
+    var anim_duration, arc, arc_tween, color, context_init, control_init, count_click_handler, height, init_arc, init_controls, init_partition, init_path, init_seed_vars, init_vis, json, partition, path, radius, size_click_handler, stash, vis, width;
     width = void 0;
     height = void 0;
     radius = void 0;
@@ -105,20 +105,18 @@
     */
 
     size_click_handler = function() {
-      path.data(partition.value(size_calculation_handler)).transition().duration(anim_duration).attrTween("d", arc_tween);
+      path.data(partition.value(function(d) {
+        return d.size;
+      })).transition().duration(anim_duration).attrTween("d", arc_tween);
       d3.select("#size").classed("active", true);
       return d3.select("#count").classed("active", false);
     };
     count_click_handler = function() {
-      path.data(partition.value(count_calculation_handler)).transition().duration(anim_duration).attrTween("d", arc_tween);
+      path.data(partition.value(function(d) {
+        return 1;
+      })).transition().duration(anim_duration).attrTween("d", arc_tween);
       d3.select("#size").classed("active", false);
       return d3.select("#count").classed("active", true);
-    };
-    size_calculation_handler = function(d) {
-      return d.size;
-    };
-    count_calculation_handler = function(d) {
-      return 1;
     };
     /*
         Utility Functions
