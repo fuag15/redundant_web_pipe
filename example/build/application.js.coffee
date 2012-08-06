@@ -111,7 +111,7 @@ window.main_lib_name = window.main_lib_name or {}
   ###
     
   size_click_handler = ->
-    path.data(partition.value size_calculation_handler)
+    path.data(partition.value (d) -> d.size)
       .transition()
       .duration(anim_duration)
       .attrTween "d", arc_tween
@@ -121,7 +121,7 @@ window.main_lib_name = window.main_lib_name or {}
       .classed "active", false
     
   count_click_handler = ->
-    path.data(partition.value count_calculation_handler)
+    path.data(partition.value (d) -> 1)
       .transition()
       .duration(anim_duration)
       .attrTween "d", arc_tween
@@ -129,12 +129,6 @@ window.main_lib_name = window.main_lib_name or {}
       .classed "active", false
     d3.select("#count") 
       .classed "active", true
-    
-  size_calculation_handler = (d) ->
-    d.size
-    
-  count_calculation_handler = (d) ->
-    1
   
   ###
     Utility Functions
