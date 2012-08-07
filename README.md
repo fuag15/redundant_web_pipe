@@ -28,6 +28,9 @@ The layout and logic flow of the code has been modified to fit my preffered java
 Right now it has very basic functionality, plan to add sass support in the future, 
 maybe haml but thats another beast for planning how to integrate them.
 
+Should integrate with watchdog to watch source directories for changes, compile on change and notify in 
+dom on compile error
+
 This example is flush with 1000 foldiers for something fairly simple those could definitely be reduced.
 
 ### Install
