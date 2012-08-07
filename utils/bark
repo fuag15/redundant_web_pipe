@@ -1,0 +1,17 @@
+#!/bin/bash
+
+SOURCE="${BASH_SOURCE[0]}"
+DIR="$( dirname "$SOURCE" )"
+while [ -h "$SOURCE" ]
+do 
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+  DIR="$( cd "$( dirname "$0" )" && pwd )"
+done
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+cd $DIR
+
+cd ../src
+
+watchmedo shell-command --patterns="*.js.coffee" --recursive --command='../utils/automate'
