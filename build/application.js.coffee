@@ -158,4 +158,3 @@ $ ->
 ###
   src_file: ../src/init.js.coffee
 ###
- 
