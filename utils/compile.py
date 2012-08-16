@@ -43,7 +43,7 @@ def compile_folder_tuple(file_info):
   Feeds a tuple of (file path, [files in path]) to compile_coffeescript to be compiled
   """
   for file_name in file_info[1]:
-    if file_name.endswith(".coffeescript"):
+    if file_name.endswith(".coffee"):
       compile_coffeescript(os.path.join(file_info[0],file_name))
 
 def compile_all_the_files(path):
