@@ -14,4 +14,4 @@ cd $DIR
 
 cd ../src
 
-watchmedo shell-command --patterns="*.js.coffee" --recursive --command='../utils/automate'
+watchmedo shell-command --patterns="*.js.coffee" --recursive --command='echo "Refreshing: `date +%H:%M:%S`"; ../utils/automate'

@@ -38,18 +38,19 @@ def compile_coffeescript(filename):
     print "Did you remember to leave an empty line at the end of a source file?"
     sys.exit(12)
 
-def compile_foldier_tuple(file_info):
+def compile_folder_tuple(file_info):
   """
   Feeds a tuple of (file path, [files in path]) to compile_coffeescript to be compiled
   """
   for file_name in file_info[1]:
-    compile_coffeescript(file_info[0] + "/" + file_name)
+    if file_name.endswith(".coffeescript"):
+      compile_coffeescript(os.path.join(file_info[0],file_name))
 
 def compile_all_the_files(path):
   """
   Runs through the specified path and compiles all files within from js to coffeescript
   """
-  [compile_foldier_tuple(file_info) for file_info in get_filenames(path)]
+  [compile_folder_tuple(file_info) for file_info in get_filenames(path)]
 
 
 def final_coffee_compile(filename):
